@@ -1,0 +1,46 @@
+﻿@model PiimaToostusKlient.Models.OsakonnadModel
+@{
+    ViewBag.Title = "Osakonnad";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Osakonnad</h2><br /><br />
+
+<table border=1>
+    <tr>
+       <th>Nimetus</th> 
+       <th>Algus KP</th> 
+       <th>Lõpp KP</th> 
+       <th>Hoone</th> 
+       <th>Liik</th> 
+       <th>Tegevused</th> 
+    </tr>
+    @if(Model.AllOsakonnad != null && Model.AllOsakonnad.Count != 0)
+    {
+        foreach(PiimaToostusKlient.PtServiceRef.Osakond Osknd in Model.AllOsakonnad)
+        {
+            <tr>
+                <td>@Osknd.Nimetus</td> 
+                <td>@PiimaToostusKlient.Utils.Utils.GetKuvatavDate(Osknd.AlgusKP)</td> 
+                <td>@PiimaToostusKlient.Utils.Utils.GetKuvatavDate(Osknd.LoppKP)</td> 
+                <td>@if(Osknd.HooneID != null){ @Osknd.HooneID.Nimetus }</td> 
+                <td>@if(Osknd.OsakondLiikID != null){ @Osknd.OsakondLiikID.Nimetus }</td> 
+                <td>
+                    @Html.ActionLink("Muuda", "MuudaOsakonda", new { id = Osknd.ID }, null)  
+                    @Html.ActionLink("Kustuta", "KustutaOsakond", new { id = Osknd.ID }, null)
+                </td> 
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="11" align="center"><font size="3" color="red">Kirjed puuduvad!</font></td>
+        </tr>
+    }
+
+</table>
+
+<br />
+@Html.ActionLink("Lisa uus osakond", "LisaOsakond")<br /><br />
+@Html.ActionLink("Tagasi pealehele", "WelcomePage", "Shared")

@@ -1,0 +1,93 @@
+﻿@model PiimaToostusKlient.Models.AtribuutikaModel
+@{
+    ViewBag.Title = "LisaAtribuutika";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<h2>Lisa voi muuda atribuutikat</h2><br /><br />
+<script>
+    $(function () {
+        $("#JargmineHooldusKP").datepicker({
+
+            showOn: "button",
+            changeMonth: true,
+            changeYear: true,
+            buttonImage: "@Url.Content("~/Content/themes/JqueryDesign/images/calendar.gif")",
+            dateFormat:'dd.mm.yy',
+            buttonImageOnly: true
+        });
+    });
+</script>
+<section id="AtribuutikaForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend></legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Nimetus)
+                    @Html.TextBoxFor(m => m.Nimetus)
+                    @Html.ValidationMessageFor(m => m.Nimetus)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.JargmineHooldusKP)
+                    @Html.TextBoxFor(m => m.JargmineHooldusKP)
+                    @Html.ValidationMessageFor(m => m.JargmineHooldusKP)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.SeeriaNR_KereNR)
+                    @Html.TextBoxFor(m => m.SeeriaNR_KereNR)
+                    @Html.ValidationMessageFor(m => m.SeeriaNR_KereNR)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.Kood)
+                    @Html.TextBoxFor(m => m.Kood)
+                    @Html.ValidationMessageFor(m => m.Kood)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.RegistriKood)
+                    @Html.TextBoxFor(m => m.RegistriKood)
+                    @Html.ValidationMessageFor(m => m.RegistriKood)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.MaxVeovoime)
+                    @Html.TextBoxFor(m => m.MaxVeovoime)
+                    @Html.ValidationMessageFor(m => m.MaxVeovoime)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.VeovoimeYhikIndikaator)
+                    @Html.TextBoxFor(m => m.VeovoimeYhikIndikaator)
+                    @Html.ValidationMessageFor(m => m.VeovoimeYhikIndikaator)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.Kategooria)
+                    @Html.TextBoxFor(m => m.Kategooria)
+                    @Html.ValidationMessageFor(m => m.Kategooria)
+               </li>
+               <li>
+                    @Html.LabelFor(m=>m.AtribuutikaLiikID)
+                   
+                    @if (Model.AtribuutikaLiigid == null)
+                    { @Html.DropDownListFor(x => x.AtribuutikaLiikID, new SelectList(new[] { "-" }, "-")) }
+                    else
+                    { @Html.DropDownListFor(x => x.AtribuutikaLiikID, Model.AtribuutikaLiigid) }
+
+                    @Html.ValidationMessageFor(m => m.AtribuutikaLiikID)
+                    @Html.ActionLink(" Lisa ", "LisaAtribuutikaLiik", "Atribuutikad")
+                    @Html.ActionLink(" Muuda ", "MuudaAttribLiik", "Atribuutikad",  new { id = Model.AtribuutikaLiikID }, null)  
+                    @Html.ActionLink(" Kustuta ", "KustutaAttribLiik", "Atribuutikad", new { id = Model.AtribuutikaLiikID }, null)    
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.Kommentaar)
+                    @Html.TextAreaFor(m => m.Kommentaar)
+                    @Html.ValidationMessageFor(m => m.Kommentaar)
+               </li>
+            </ol>
+            <input type="submit" value="Salvesta" />
+        </fieldset>
+    }
+</section>
+<br />
+@Html.ActionLink("Tagasi", "Atribuutikad")

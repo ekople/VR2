@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PiimaToostusService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:52063/PiimaToostusService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:52063/PiimaToostusService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52063/PiimaToostusService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PiimaToostusService" />
+      <xsd:import schemaLocation="http://localhost:52063/PiimaToostusService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPiimaToostusService_AddRiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddRiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveRiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveRiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveRiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveRiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateRiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateRiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllAtribuutika_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAtribuutika" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllAtribuutika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAtribuutikaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllAtribuutikaLiigid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAtribuutikaLiigid" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllAtribuutikaLiigid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAtribuutikaLiigidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllHooned_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHooned" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllHooned_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHoonedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllIsikud_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIsikud" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllIsikud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIsikudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllIsikuGraafikud_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIsikuGraafikud" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllIsikuGraafikud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllIsikuGraafikudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllLinnad_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLinnad" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllLinnad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLinnadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllOsakonnad_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOsakonnad" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllOsakonnad_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOsakonnadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllOsakonnaLiigid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOsakonnaLiigid" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllOsakonnaLiigid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOsakonnaLiigidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllRiigid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRiigid" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllRiigid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRiigidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllRollid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRollid" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllRollid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRollidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AuthUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AuthUser" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AuthUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddIsik_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddIsik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddIsik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddIsikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveIsik_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveIsik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveIsik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveIsikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateIsik_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIsik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateIsik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIsikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUser" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUser" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddAtribuutika_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAtribuutika" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddAtribuutika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAtribuutikaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveAtribuutika_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAtribuutika" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveAtribuutika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAtribuutikaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateAtribuutika_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAtribuutika" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateAtribuutika_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAtribuutikaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddAtribuutikaLiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAtribuutikaLiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddAtribuutikaLiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAtribuutikaLiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveAtribuutikaLiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAtribuutikaLiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveAtribuutikaLiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAtribuutikaLiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateAtribuutikaLiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAtribuutikaLiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateAtribuutikaLiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAtribuutikaLiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddHoone_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddHoone" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddHoone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddHooneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveHoone_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveHoone" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveHoone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveHooneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateHoone_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHoone" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateHoone_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHooneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddIsikGraafik_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddIsikGraafik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddIsikGraafik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddIsikGraafikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveIsikGraafik_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveIsikGraafik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveIsikGraafik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveIsikGraafikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateIsikGraafik_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIsikGraafik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateIsikGraafik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIsikGraafikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddLinn_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddLinn" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddLinn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddLinnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveLinn_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLinn" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveLinn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveLinnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateLinn_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLinn" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateLinn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLinnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddOsakond_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOsakond" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddOsakond_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOsakondResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveOsakond_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOsakond" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveOsakond_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOsakondResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateOsakond_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOsakond" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateOsakond_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOsakondResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddOsakondLiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOsakondLiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_AddOsakondLiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOsakondLiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveOsakondLiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOsakondLiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_RemoveOsakondLiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveOsakondLiikResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateOsakondLiik_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOsakondLiik" />
+  </wsdl:message>
+  <wsdl:message name="IPiimaToostusService_UpdateOsakondLiik_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOsakondLiikResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPiimaToostusService">
+    <wsdl:operation name="AddRiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddRiik" message="tns:IPiimaToostusService_AddRiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddRiikResponse" message="tns:IPiimaToostusService_AddRiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveRiik" message="tns:IPiimaToostusService_RemoveRiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveRiikResponse" message="tns:IPiimaToostusService_RemoveRiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateRiik" message="tns:IPiimaToostusService_UpdateRiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateRiikResponse" message="tns:IPiimaToostusService_UpdateRiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAtribuutika">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllAtribuutika" message="tns:IPiimaToostusService_GetAllAtribuutika_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllAtribuutikaResponse" message="tns:IPiimaToostusService_GetAllAtribuutika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAtribuutikaLiigid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllAtribuutikaLiigid" message="tns:IPiimaToostusService_GetAllAtribuutikaLiigid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllAtribuutikaLiigidResponse" message="tns:IPiimaToostusService_GetAllAtribuutikaLiigid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHooned">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllHooned" message="tns:IPiimaToostusService_GetAllHooned_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllHoonedResponse" message="tns:IPiimaToostusService_GetAllHooned_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIsikud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllIsikud" message="tns:IPiimaToostusService_GetAllIsikud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllIsikudResponse" message="tns:IPiimaToostusService_GetAllIsikud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIsikuGraafikud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllIsikuGraafikud" message="tns:IPiimaToostusService_GetAllIsikuGraafikud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllIsikuGraafikudResponse" message="tns:IPiimaToostusService_GetAllIsikuGraafikud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinnad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllLinnad" message="tns:IPiimaToostusService_GetAllLinnad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllLinnadResponse" message="tns:IPiimaToostusService_GetAllLinnad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOsakonnad">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllOsakonnad" message="tns:IPiimaToostusService_GetAllOsakonnad_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllOsakonnadResponse" message="tns:IPiimaToostusService_GetAllOsakonnad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOsakonnaLiigid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllOsakonnaLiigid" message="tns:IPiimaToostusService_GetAllOsakonnaLiigid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllOsakonnaLiigidResponse" message="tns:IPiimaToostusService_GetAllOsakonnaLiigid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRiigid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllRiigid" message="tns:IPiimaToostusService_GetAllRiigid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllRiigidResponse" message="tns:IPiimaToostusService_GetAllRiigid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRollid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllRollid" message="tns:IPiimaToostusService_GetAllRollid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllRollidResponse" message="tns:IPiimaToostusService_GetAllRollid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllUsers" message="tns:IPiimaToostusService_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/GetAllUsersResponse" message="tns:IPiimaToostusService_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AuthUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AuthUser" message="tns:IPiimaToostusService_AuthUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AuthUserResponse" message="tns:IPiimaToostusService_AuthUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddIsik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddIsik" message="tns:IPiimaToostusService_AddIsik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddIsikResponse" message="tns:IPiimaToostusService_AddIsik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIsik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveIsik" message="tns:IPiimaToostusService_RemoveIsik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveIsikResponse" message="tns:IPiimaToostusService_RemoveIsik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateIsik" message="tns:IPiimaToostusService_UpdateIsik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateIsikResponse" message="tns:IPiimaToostusService_UpdateIsik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddUser" message="tns:IPiimaToostusService_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddUserResponse" message="tns:IPiimaToostusService_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveUser" message="tns:IPiimaToostusService_RemoveUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveUserResponse" message="tns:IPiimaToostusService_RemoveUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateUser" message="tns:IPiimaToostusService_UpdateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateUserResponse" message="tns:IPiimaToostusService_UpdateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAtribuutika">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddAtribuutika" message="tns:IPiimaToostusService_AddAtribuutika_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddAtribuutikaResponse" message="tns:IPiimaToostusService_AddAtribuutika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAtribuutika">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveAtribuutika" message="tns:IPiimaToostusService_RemoveAtribuutika_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveAtribuutikaResponse" message="tns:IPiimaToostusService_RemoveAtribuutika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAtribuutika">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateAtribuutika" message="tns:IPiimaToostusService_UpdateAtribuutika_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateAtribuutikaResponse" message="tns:IPiimaToostusService_UpdateAtribuutika_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAtribuutikaLiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddAtribuutikaLiik" message="tns:IPiimaToostusService_AddAtribuutikaLiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddAtribuutikaLiikResponse" message="tns:IPiimaToostusService_AddAtribuutikaLiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAtribuutikaLiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveAtribuutikaLiik" message="tns:IPiimaToostusService_RemoveAtribuutikaLiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveAtribuutikaLiikResponse" message="tns:IPiimaToostusService_RemoveAtribuutikaLiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAtribuutikaLiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateAtribuutikaLiik" message="tns:IPiimaToostusService_UpdateAtribuutikaLiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateAtribuutikaLiikResponse" message="tns:IPiimaToostusService_UpdateAtribuutikaLiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddHoone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddHoone" message="tns:IPiimaToostusService_AddHoone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddHooneResponse" message="tns:IPiimaToostusService_AddHoone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveHoone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveHoone" message="tns:IPiimaToostusService_RemoveHoone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveHooneResponse" message="tns:IPiimaToostusService_RemoveHoone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHoone">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateHoone" message="tns:IPiimaToostusService_UpdateHoone_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateHooneResponse" message="tns:IPiimaToostusService_UpdateHoone_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddIsikGraafik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddIsikGraafik" message="tns:IPiimaToostusService_AddIsikGraafik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddIsikGraafikResponse" message="tns:IPiimaToostusService_AddIsikGraafik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIsikGraafik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveIsikGraafik" message="tns:IPiimaToostusService_RemoveIsikGraafik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveIsikGraafikResponse" message="tns:IPiimaToostusService_RemoveIsikGraafik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsikGraafik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateIsikGraafik" message="tns:IPiimaToostusService_UpdateIsikGraafik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateIsikGraafikResponse" message="tns:IPiimaToostusService_UpdateIsikGraafik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLinn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddLinn" message="tns:IPiimaToostusService_AddLinn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddLinnResponse" message="tns:IPiimaToostusService_AddLinn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLinn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveLinn" message="tns:IPiimaToostusService_RemoveLinn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveLinnResponse" message="tns:IPiimaToostusService_RemoveLinn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateLinn" message="tns:IPiimaToostusService_UpdateLinn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateLinnResponse" message="tns:IPiimaToostusService_UpdateLinn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOsakond">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddOsakond" message="tns:IPiimaToostusService_AddOsakond_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddOsakondResponse" message="tns:IPiimaToostusService_AddOsakond_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOsakond">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveOsakond" message="tns:IPiimaToostusService_RemoveOsakond_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveOsakondResponse" message="tns:IPiimaToostusService_RemoveOsakond_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOsakond">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateOsakond" message="tns:IPiimaToostusService_UpdateOsakond_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateOsakondResponse" message="tns:IPiimaToostusService_UpdateOsakond_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddOsakondLiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/AddOsakondLiik" message="tns:IPiimaToostusService_AddOsakondLiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/AddOsakondLiikResponse" message="tns:IPiimaToostusService_AddOsakondLiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOsakondLiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveOsakondLiik" message="tns:IPiimaToostusService_RemoveOsakondLiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/RemoveOsakondLiikResponse" message="tns:IPiimaToostusService_RemoveOsakondLiik_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOsakondLiik">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateOsakondLiik" message="tns:IPiimaToostusService_UpdateOsakondLiik_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPiimaToostusService/UpdateOsakondLiikResponse" message="tns:IPiimaToostusService_UpdateOsakondLiik_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPiimaToostusService" type="tns:IPiimaToostusService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddRiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddRiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveRiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateRiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAtribuutika">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllAtribuutika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAtribuutikaLiigid">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllAtribuutikaLiigid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHooned">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllHooned" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIsikud">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllIsikud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllIsikuGraafikud">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllIsikuGraafikud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLinnad">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllLinnad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOsakonnad">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllOsakonnad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOsakonnaLiigid">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllOsakonnaLiigid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRiigid">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllRiigid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRollid">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllRollid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AuthUser">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AuthUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddIsik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddIsik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIsik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveIsik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateIsik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUser">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAtribuutika">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddAtribuutika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAtribuutika">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveAtribuutika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAtribuutika">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateAtribuutika" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddAtribuutikaLiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddAtribuutikaLiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAtribuutikaLiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveAtribuutikaLiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAtribuutikaLiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateAtribuutikaLiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddHoone">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddHoone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveHoone">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveHoone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHoone">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateHoone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddIsikGraafik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddIsikGraafik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveIsikGraafik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveIsikGraafik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIsikGraafik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateIsikGraafik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLinn">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddLinn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveLinn">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveLinn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLinn">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateLinn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOsakond">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddOsakond" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOsakond">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveOsakond" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOsakond">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateOsakond" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOsakondLiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/AddOsakondLiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveOsakondLiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/RemoveOsakondLiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOsakondLiik">
+      <soap:operation soapAction="http://tempuri.org/IPiimaToostusService/UpdateOsakondLiik" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PiimaToostusService">
+    <wsdl:port name="BasicHttpBinding_IPiimaToostusService" binding="tns:BasicHttpBinding_IPiimaToostusService">
+      <soap:address location="http://localhost:52063/PiimaToostusService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

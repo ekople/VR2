@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PiimaToostusService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PiimaToostusService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52063/PiimaToostusService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="Riik">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tahis" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Riik" nillable="true" type="tns:Riik" />
+  <xs:complexType name="ModRiikResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedRiik" nillable="true" type="tns:Riik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModRiikResponse" nillable="true" type="tns:ModRiikResponse" />
+  <xs:complexType name="StandardResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthResponse" nillable="true" type="tns:AuthResponse" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="Exception" nillable="true" type="q1:Exception" />
+      <xs:element minOccurs="0" name="Successful" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StandardResponse" nillable="true" type="tns:StandardResponse" />
+  <xs:complexType name="AuthResponse">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="AuthException" nillable="true" type="q2:Exception" />
+      <xs:element minOccurs="0" name="IsAuthenticated" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Kasustaja" nillable="true" type="tns:Kasutaja" />
+      <xs:element minOccurs="0" name="SessionHandle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SessionValidFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SessionValidTo" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthResponse" nillable="true" type="tns:AuthResponse" />
+  <xs:complexType name="Kasutaja">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlgusKP" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsikID" nillable="true" type="tns:Isik" />
+      <xs:element minOccurs="0" name="KasutajaNimi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoppKP" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PsswdHash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RollID" nillable="true" type="tns:Roll" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Kasutaja" nillable="true" type="tns:Kasutaja" />
+  <xs:complexType name="Isik">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EMail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Eesnimi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Isikukood" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KontaktTelefon" type="xs:int" />
+      <xs:element minOccurs="0" name="Perenimi" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SynniKP" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Isik" nillable="true" type="tns:Isik" />
+  <xs:complexType name="Roll">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kirjeldus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Roll" nillable="true" type="tns:Roll" />
+  <xs:complexType name="ModGetAllAtribuutikaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllAtribuutika" nillable="true" type="tns:ArrayOfAtribuutika" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllAtribuutikaResponse" nillable="true" type="tns:ModGetAllAtribuutikaResponse" />
+  <xs:complexType name="ArrayOfAtribuutika">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Atribuutika" nillable="true" type="tns:Atribuutika" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAtribuutika" nillable="true" type="tns:ArrayOfAtribuutika" />
+  <xs:complexType name="Atribuutika">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AtribuutikaLiikID" nillable="true" type="tns:AtribuutikaLiik" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="JargmineHooldusKP" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Kategooria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Kommentaar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Kood" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxVeovoime" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistriKood" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeeriaNR_KereNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VeovoimeYhikIndikaator" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Atribuutika" nillable="true" type="tns:Atribuutika" />
+  <xs:complexType name="AtribuutikaLiik">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsikugaSeostatav" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Kirjeldus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Kommentaar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AtribuutikaLiik" nillable="true" type="tns:AtribuutikaLiik" />
+  <xs:complexType name="ModGetAllAtribuutikaLiigidResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllAtribuutikaLiigid" nillable="true" type="tns:ArrayOfAtribuutikaLiik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllAtribuutikaLiigidResponse" nillable="true" type="tns:ModGetAllAtribuutikaLiigidResponse" />
+  <xs:complexType name="ArrayOfAtribuutikaLiik">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AtribuutikaLiik" nillable="true" type="tns:AtribuutikaLiik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAtribuutikaLiik" nillable="true" type="tns:ArrayOfAtribuutikaLiik" />
+  <xs:complexType name="ModGetAllHoonedResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllHooned" nillable="true" type="tns:ArrayOfHoone" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllHoonedResponse" nillable="true" type="tns:ModGetAllHoonedResponse" />
+  <xs:complexType name="ArrayOfHoone">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Hoone" nillable="true" type="tns:Hoone" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHoone" nillable="true" type="tns:ArrayOfHoone" />
+  <xs:complexType name="Hoone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Aadress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LinnID" nillable="true" type="tns:Linn" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValvelauaKontaktTelefon" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Hoone" nillable="true" type="tns:Hoone" />
+  <xs:complexType name="Linn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RiikID" nillable="true" type="tns:Riik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Linn" nillable="true" type="tns:Linn" />
+  <xs:complexType name="ModGetAllIsikudResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllIsikud" nillable="true" type="tns:ArrayOfIsik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllIsikudResponse" nillable="true" type="tns:ModGetAllIsikudResponse" />
+  <xs:complexType name="ArrayOfIsik">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Isik" nillable="true" type="tns:Isik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIsik" nillable="true" type="tns:ArrayOfIsik" />
+  <xs:complexType name="ModGetAllIsikuGraafikudResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllIsikuGraafikud" nillable="true" type="tns:ArrayOfIsikGraafik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllIsikuGraafikudResponse" nillable="true" type="tns:ModGetAllIsikuGraafikudResponse" />
+  <xs:complexType name="ArrayOfIsikGraafik">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IsikGraafik" nillable="true" type="tns:IsikGraafik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIsikGraafik" nillable="true" type="tns:ArrayOfIsikGraafik" />
+  <xs:complexType name="IsikGraafik">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlgusKP" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AtribuutikaID" nillable="true" type="tns:Atribuutika" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsikID" nillable="true" type="tns:Isik" />
+      <xs:element minOccurs="0" name="Kommentaar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoppKP" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OsakondID" nillable="true" type="tns:Osakond" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IsikGraafik" nillable="true" type="tns:IsikGraafik" />
+  <xs:complexType name="Osakond">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlgusKP" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HooneID" nillable="true" type="tns:Hoone" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LoppKP" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OsakondLiikID" nillable="true" type="tns:OsakondLiik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Osakond" nillable="true" type="tns:Osakond" />
+  <xs:complexType name="OsakondLiik">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Kirjeldus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Kommentaar" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nimetus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OsakondLiik" nillable="true" type="tns:OsakondLiik" />
+  <xs:complexType name="ModGetAllLinnadResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllLinnad" nillable="true" type="tns:ArrayOfLinn" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllLinnadResponse" nillable="true" type="tns:ModGetAllLinnadResponse" />
+  <xs:complexType name="ArrayOfLinn">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Linn" nillable="true" type="tns:Linn" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLinn" nillable="true" type="tns:ArrayOfLinn" />
+  <xs:complexType name="ModGetAllOsakonnadResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllOsakonnad" nillable="true" type="tns:ArrayOfOsakond" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllOsakonnadResponse" nillable="true" type="tns:ModGetAllOsakonnadResponse" />
+  <xs:complexType name="ArrayOfOsakond">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Osakond" nillable="true" type="tns:Osakond" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOsakond" nillable="true" type="tns:ArrayOfOsakond" />
+  <xs:complexType name="ModGetAllOsakonnaLiigidResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllOsakonnaLiigid" nillable="true" type="tns:ArrayOfOsakondLiik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllOsakonnaLiigidResponse" nillable="true" type="tns:ModGetAllOsakonnaLiigidResponse" />
+  <xs:complexType name="ArrayOfOsakondLiik">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OsakondLiik" nillable="true" type="tns:OsakondLiik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOsakondLiik" nillable="true" type="tns:ArrayOfOsakondLiik" />
+  <xs:complexType name="ModGetAllRiigidResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRiigid" nillable="true" type="tns:ArrayOfRiik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllRiigidResponse" nillable="true" type="tns:ModGetAllRiigidResponse" />
+  <xs:complexType name="ArrayOfRiik">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Riik" nillable="true" type="tns:Riik" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRiik" nillable="true" type="tns:ArrayOfRiik" />
+  <xs:complexType name="ModGetAllRollidResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllRollid" nillable="true" type="tns:ArrayOfRoll" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllRollidResponse" nillable="true" type="tns:ModGetAllRollidResponse" />
+  <xs:complexType name="ArrayOfRoll">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Roll" nillable="true" type="tns:Roll" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoll" nillable="true" type="tns:ArrayOfRoll" />
+  <xs:complexType name="ModGetAllUsersResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AllUsers" nillable="true" type="tns:ArrayOfKasutaja" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModGetAllUsersResponse" nillable="true" type="tns:ModGetAllUsersResponse" />
+  <xs:complexType name="ArrayOfKasutaja">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Kasutaja" nillable="true" type="tns:Kasutaja" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfKasutaja" nillable="true" type="tns:ArrayOfKasutaja" />
+  <xs:complexType name="ModIsikResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedIsik" nillable="true" type="tns:Isik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModIsikResponse" nillable="true" type="tns:ModIsikResponse" />
+  <xs:complexType name="ModUserResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedUser" nillable="true" type="tns:Kasutaja" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModUserResponse" nillable="true" type="tns:ModUserResponse" />
+  <xs:complexType name="ModAtribuutikaResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedAtribuutika" nillable="true" type="tns:Atribuutika" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModAtribuutikaResponse" nillable="true" type="tns:ModAtribuutikaResponse" />
+  <xs:complexType name="ModAtribuutikaLiikResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedAtribuutikaLiik" nillable="true" type="tns:AtribuutikaLiik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModAtribuutikaLiikResponse" nillable="true" type="tns:ModAtribuutikaLiikResponse" />
+  <xs:complexType name="ModHooneResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedHoone" nillable="true" type="tns:Hoone" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModHooneResponse" nillable="true" type="tns:ModHooneResponse" />
+  <xs:complexType name="ModIsikGraafikResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedIsikGraafik" nillable="true" type="tns:IsikGraafik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModIsikGraafikResponse" nillable="true" type="tns:ModIsikGraafikResponse" />
+  <xs:complexType name="ModLinnResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedLinn" nillable="true" type="tns:Linn" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModLinnResponse" nillable="true" type="tns:ModLinnResponse" />
+  <xs:complexType name="ModOsakondResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedOsakond" nillable="true" type="tns:Osakond" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModOsakondResponse" nillable="true" type="tns:ModOsakondResponse" />
+  <xs:complexType name="ModOsakondLiikResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:StandardResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ModifiedOsakondLiik" nillable="true" type="tns:OsakondLiik" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ModOsakondLiikResponse" nillable="true" type="tns:ModOsakondLiikResponse" />
+</xs:schema>

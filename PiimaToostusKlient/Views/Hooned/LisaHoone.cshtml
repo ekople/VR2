@@ -1,0 +1,53 @@
+﻿@model PiimaToostusKlient.Models.HooneModel
+@{
+    ViewBag.Title = "LisaHoone";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Lisa voi muud hooneid</h2><br /><br />
+<section id="AtribuutikaLiikForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend></legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Nimetus)
+                    @Html.TextBoxFor(m => m.Nimetus)
+                    @Html.ValidationMessageFor(m => m.Nimetus)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.Aadress)
+                    @Html.TextBoxFor(m => m.Aadress)
+                    @Html.ValidationMessageFor(m => m.Aadress)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.ValvelauaKontaktTelefon)
+                    @Html.TextBoxFor(m => m.ValvelauaKontaktTelefon)
+                    @Html.ValidationMessageFor(m => m.ValvelauaKontaktTelefon)
+               </li>
+               <li>
+                    @Html.LabelFor(m=>m.LinnID)
+                   
+                    @if (Model.Linnad == null)
+                    { @Html.DropDownList("Select", new SelectList(new[] { "-" }, "-")) }
+                    else
+                    { @Html.DropDownList("Select", Model.Linnad) }
+
+                    @Html.ValidationMessageFor(m => m.LinnID)
+                    @Html.ActionLink(" Lisa ", "LisaLinn", "Linnad")
+                    @Html.ActionLink(" Muuda ", "LisaLinn", "Linnad", new { id = 1 }, null)
+                    @Html.ActionLink(" Kustuta ", "LisaHoone", new { id = 1 }, null)
+               </li>
+            </ol>
+            <input type="submit" value="Salvesta" />
+        </fieldset>
+    }
+</section>
+<br />
+
+
+@Html.ActionLink("Tagasi","LisaOsakond", "Osakonnad")

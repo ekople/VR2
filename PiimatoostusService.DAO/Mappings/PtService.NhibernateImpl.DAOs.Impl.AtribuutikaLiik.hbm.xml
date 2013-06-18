@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                   xmlns='urn:nhibernate-mapping-2.2'>
+
+  <class name='PtService.NhibernateImpl.DAOs.Impl.AtribuutikaLiik, PtService.NhibernateImpl' table='AtribuutikaLiik'>
+
+    <id name='ID' column='ID' type='Int32' unsaved-value="0">
+      <generator class='identity' />
+    </id>
+
+    <property name='Nimetus' type='String' column='Nimetus' not-null="true" />
+    <property name='IsikugaSeostatav' type='Boolean' column='IsikugaSeostatav' />
+    <property name='Kommentaar' type='String' column='Kommentaar' />
+    <property name='Kirjeldus' type='String' column='Kirjeldus' />
+
+  </class>
+</hibernate-mapping>

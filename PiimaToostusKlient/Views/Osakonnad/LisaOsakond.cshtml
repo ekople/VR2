@@ -1,0 +1,86 @@
+﻿@model PiimaToostusKlient.Models.OsakondModel
+@{
+    ViewBag.Title = "LisaOsakond";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Lisa voi muuda osakonda</h2><br /><br />
+<script>
+    $(function () {
+        $("#AlgusKP").datepicker({
+            showOn: "button",
+            changeMonth: true,
+            changeYear: true,
+            buttonImage: "@Url.Content("~/Content/themes/JqueryDesign/images/calendar.gif")",
+            dateFormat:'dd.mm.yy',
+            buttonImageOnly: true
+        });
+        $("#LoppKP").datepicker({
+            showOn: "button",
+            changeMonth: true,
+            changeYear: true,
+            buttonImage: "@Url.Content("~/Content/themes/JqueryDesign/images/calendar.gif")",
+            dateFormat:'dd.mm.yy',
+            buttonImageOnly: true
+        });
+    });
+</script>
+<section id="AtribuutikaLiikForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend></legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Nimetus)
+                    @Html.TextBoxFor(m => m.Nimetus)
+                    @Html.ValidationMessageFor(m => m.Nimetus)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.AlgusKP)
+                    @Html.TextBoxFor(m => m.AlgusKP)
+                    @Html.ValidationMessageFor(m => m.AlgusKP)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.LoppKP)
+                    @Html.TextBoxFor(m => m.LoppKP)
+                    @Html.ValidationMessageFor(m => m.LoppKP)
+               </li>
+               <li>
+                    @Html.LabelFor(m=>m.HooneID)
+                   
+                    @if (Model.Hooned == null)
+                    { @Html.DropDownList("Select", new SelectList(new[] { "-" }, "-")) }
+                    else
+                    { @Html.DropDownList("Select", Model.Hooned) }
+
+                    @Html.ValidationMessageFor(m => m.HooneID)
+                    @Html.ActionLink(" Lisa ", "LisaHoone", "Hooned")
+                    @Html.ActionLink(" Muuda ", "LisaHoone", "Hooned", new { id = 1 }, null)
+                    @Html.ActionLink(" Kustuta ", "LisaOsakond", new { id = 1 }, null)
+               </li>
+                <li>
+                    @Html.LabelFor(m=>m.OsakondLiik)
+                   
+                    @if (Model.OsakondLiigid == null)
+                    { @Html.DropDownList("Select", new SelectList(new[] { "-" }, "-")) }
+                    else
+                    { @Html.DropDownList("Select", Model.OsakondLiigid) }
+
+                    @Html.ValidationMessageFor(m => m.OsakondLiik)
+                    @Html.ActionLink(" Lisa ", "LisaOsakonnaLiik", "OsakonnaLiigid")
+                    @Html.ActionLink(" Muuda ", "LisaOsakonnaLiik", "OsakonnaLiigid", new { id = 1 }, null)
+                    @Html.ActionLink(" Kustuta ", "LisaOsakond", new { id = 1 }, null)
+               </li>
+            </ol>
+            <input type="submit" value="Salvesta" />
+        </fieldset>
+    }
+</section>
+<br />
+@Html.ActionLink("Tagasi", "Osakonnad")
+
+

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                   xmlns='urn:nhibernate-mapping-2.2'>
+
+  <class name='PtService.NhibernateImpl.DAOs.Impl.Atribuutika, PtService.NhibernateImpl' table='Atribuutika'>
+
+    <id name='ID' column='ID' type='Int32' unsaved-value="0">
+      <generator class='identity' />
+    </id>
+
+    <property name='Nimetus' type='String' column='Nimetus' not-null="true" />
+    <property name='JargmineHooldusKP' type='DateTime' column='JargmineHooldusKP' not-null="false" />
+    <property name='Kommentaar' type='String' column='Kommentaar' />
+    <property name='SeeriaNR_KereNR' type='String' column='SeeriaNR_KereNR' />
+    <property name='Kood' type='Int32' column='Kood' not-null="false" />
+    <property name='RegistriKood' type='String' column='RegistriKood' />
+    <property name='MaxVeovoime' type='Int32' column='MaxVeovoime' not-null="false" />
+    <property name='VeovoimeYhikIndikaator' type='String' column='VeovoimeYhikIndikaator' />
+
+    <many-to-one name="AtribuutikaLiikID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.AtribuutikaLiik, PtService.NhibernateImpl"
+                 not-null="true" />
+
+    <property name='Kategooria' type='String' column='Kategooria' not-null="false" />
+
+  </class>
+</hibernate-mapping>

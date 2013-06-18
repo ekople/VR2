@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                   xmlns='urn:nhibernate-mapping-2.2'>
+
+  <class name='PtService.NhibernateImpl.DAOs.Impl.Kasutaja, PtService.NhibernateImpl' table='Kasutaja'>
+
+    <id name='ID' column='ID' type='Int32' unsaved-value="0">
+      <generator class='identity' />
+    </id>
+
+    <property name='KasutajaNimi' type='String' column='KasutajaNimi' not-null="true" />
+    <property name='PsswdHash' type='String' column='PsswdHash' not-null="true" />
+    <property name='AlgusKP' type='DateTime' column='AlgusKP' not-null="true" />
+    <property name='LoppKP' type='DateTime' column='LoppKP' not-null="false" />
+    <many-to-one name="RollID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.Roll, PtService.NhibernateImpl"
+                 not-null="true" 
+                 update="false" insert="false"/>
+    <many-to-one name="IsikID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.Isik, PtService.NhibernateImpl"
+                 not-null="true" 
+                 update="false" insert="false"/>
+    <property name='SessionHandle' type='String' column='SessionHandle' not-null="false" />
+    <property name='SessionValidTo' type='DateTime' column='SessionValidTo' not-null="false" />
+  </class>
+</hibernate-mapping>

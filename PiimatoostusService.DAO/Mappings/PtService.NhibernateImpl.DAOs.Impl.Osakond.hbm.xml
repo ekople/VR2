@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                   xmlns='urn:nhibernate-mapping-2.2'>
+
+  <class name='PtService.NhibernateImpl.DAOs.Impl.Osakond, PtService.NhibernateImpl' table='Osakond'>
+
+    <id name='ID' column='ID' type='Int32' unsaved-value="0">
+      <generator class='identity' />
+    </id>
+    <property name='Nimetus' type='String' column='Nimetus' not-null="true" />
+    <property name='AlgusKP' type='DateTime' column='AlgusKP' not-null="true" />
+    <property name='LoppKP' type='DateTime' column='LoppKP' not-null="false" />
+
+    <many-to-one name="HooneID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.Hoone, PtService.NhibernateImpl"
+                 not-null="true" />
+    <many-to-one name="OsakondLiikID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.OsakondLiik, PtService.NhibernateImpl"
+                 not-null="true" />
+  </class>
+</hibernate-mapping>

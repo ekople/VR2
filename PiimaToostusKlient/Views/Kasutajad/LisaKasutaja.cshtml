@@ -1,0 +1,84 @@
+﻿@model PiimaToostusKlient.Models.KasutajaModel
+@{
+    ViewBag.Title = "LisaKasutaja";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Lisa voi muuda kasutajat</h2><br /><br />
+<script>
+    $(function () {
+        $("#AlgusKP").datepicker({
+            showOn: "button",
+            changeMonth: true,
+            changeYear: true,
+            buttonImage: "@Url.Content("~/Content/themes/JqueryDesign/images/calendar.gif")",
+            dateFormat:'dd.mm.yy',
+            buttonImageOnly: true
+        });
+        $("#LoppKP").datepicker({
+            showOn: "button",
+            changeMonth: true,
+            changeYear: true,
+            buttonImage: "@Url.Content("~/Content/themes/JqueryDesign/images/calendar.gif")",
+            dateFormat:'dd.mm.yy',
+            buttonImageOnly: true
+        });
+    });
+</script>
+<section id="KasutajadForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend></legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.KasutajaNimi)
+                    @Html.TextBoxFor(m => m.KasutajaNimi)
+                    @Html.ValidationMessageFor(m => m.KasutajaNimi)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.TextBoxFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.AlgusKP)
+                    @Html.TextBoxFor(m => m.AlgusKP)
+                    @Html.ValidationMessageFor(m => m.AlgusKP)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.LoppKP)
+                    @Html.TextBoxFor(m => m.LoppKP)
+                    @Html.ValidationMessageFor(m => m.LoppKP)
+               </li>
+               <li>
+                    @Html.LabelFor(m=>m.RollID)
+                   
+                    @if (Model.RollList == null)
+                    { @Html.DropDownList("Select", new SelectList(new[] { "-" }, "-")) }
+                    else
+                    { @Html.DropDownList("Select", Model.RollList) }
+
+                    @Html.ValidationMessageFor(m => m.RollID)
+               </li>
+                <li>
+                    @Html.LabelFor(m=>m.IsikID)
+                   
+                    @if (Model.Isikud == null)
+                    { @Html.DropDownList("Select", new SelectList(new[] { "-" }, "-")) }
+                    else
+                    { @Html.DropDownList("Select", Model.Isikud) }
+
+                    @Html.ValidationMessageFor(m => m.IsikID)
+               </li>
+            </ol>
+            <input type="submit" value="Salvesta" />
+        </fieldset>
+    }
+</section>
+<br />
+@Html.ActionLink("Tagasi", "Kasutajad")
+

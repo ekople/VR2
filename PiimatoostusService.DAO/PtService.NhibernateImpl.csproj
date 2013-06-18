@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C99BC4F4-5C16-49D5-8F97-1235CF8739FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PtService.NhibernateImpl</RootNamespace>
+    <AssemblyName>PtService.NhibernateImpl</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\Lib\Log4Net\1.2.11\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Lib\NHibernate\3.3.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DaoConnContext.cs" />
+    <Compile Include="DAOs\AtribuutikaDAO.cs" />
+    <Compile Include="DAOs\AtribuutikaLiikDAO.cs" />
+    <Compile Include="DAOs\BaseDAO.cs" />
+    <Compile Include="DAOs\HooneDAO.cs" />
+    <Compile Include="DAOs\Impl\Atribuutika.cs" />
+    <Compile Include="DAOs\Impl\AtribuutikaLiik.cs" />
+    <Compile Include="DAOs\Impl\Hoone.cs" />
+    <Compile Include="DAOs\Impl\Isik.cs" />
+    <Compile Include="DAOs\Impl\IsikGraafik.cs" />
+    <Compile Include="DAOs\Impl\Kasutaja.cs" />
+    <Compile Include="DAOs\Impl\Linn.cs" />
+    <Compile Include="DAOs\Impl\Osakond.cs" />
+    <Compile Include="DAOs\Impl\OsakondLiik.cs" />
+    <Compile Include="DAOs\Impl\Riik.cs" />
+    <Compile Include="DAOs\Impl\Roll.cs" />
+    <Compile Include="DAOs\IsikDAO.cs" />
+    <Compile Include="DAOs\IsikGraafikDAO.cs" />
+    <Compile Include="DAOs\KasutajaDAO.cs" />
+    <Compile Include="DAOs\LinnDAO.cs" />
+    <Compile Include="DAOs\OsakondDAO.cs" />
+    <Compile Include="DAOs\OsakondLiikDAO.cs" />
+    <Compile Include="DAOs\RiikDAO.cs" />
+    <Compile Include="DAOs\RollDAO.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Atribuutika.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.AtribuutikaLiik.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Hoone.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Isik.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.IsikGraafik.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Kasutaja.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Linn.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Osakond.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.OsakondLiik.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Riik.hbm.xml" />
+    <EmbeddedResource Include="Mappings\PtService.NhibernateImpl.DAOs.Impl.Roll.hbm.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

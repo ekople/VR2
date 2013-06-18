@@ -1,0 +1,50 @@
+﻿@model PiimaToostusKlient.Models.IsikudModel
+@{
+    ViewBag.Title = "Isikud";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Isikud</h2><br /><br />
+
+<table border=1>
+    <tr>
+       <th>Eesnimi</th> 
+       <th>Perenimi</th> 
+       <th>Isikukood</th> 
+       <th>E-mail</th> 
+       <th>Kontakt telefon</th> 
+       <th>Sünni KP</th> 
+       <th>Tegevused</th> 
+    </tr>
+    @if(Model.AllIsikud != null && Model.AllIsikud.Count != 0)
+    {
+        foreach(PiimaToostusKlient.PtServiceRef.Isik Isk in Model.AllIsikud)
+        {
+            <tr>
+                <td>@Isk.Eesnimi</td> 
+                <td>@Isk.Perenimi</td> 
+                <td>@Isk.Isikukood</td> 
+                <td>@Isk.EMail</td> 
+                <td>@Isk.KontaktTelefon</td> 
+                <td>@PiimaToostusKlient.Utils.Utils.GetKuvatavDate(Isk.SynniKP)</td> 
+                <td>
+                    @Html.ActionLink("Muuda", "MuudaIsikut", new { id = Isk.ID }, null)  
+                    @Html.ActionLink("Kustuta", "KustutaIsik", new { id = Isk.ID }, null)
+                </td> 
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="11" align="center"><font size="3" color="red">Kirjed puuduvad!</font></td>
+        </tr>
+    }
+
+</table>
+<br />
+
+<br />
+@Html.ActionLink("Loo uus isik", "LooIsik")<br />
+<br />
+@Html.ActionLink("Tagasi pealehele", "WelcomePage", "Shared")

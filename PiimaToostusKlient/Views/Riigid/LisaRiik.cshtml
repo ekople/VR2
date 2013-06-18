@@ -1,0 +1,35 @@
+﻿@model PiimaToostusKlient.Models.RiikModel
+@{
+    ViewBag.Title = "LisaRiik";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Lisa voi muuda riiki</h2><br /><br />
+<section id="AtribuutikaLiikForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend></legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Nimetus)
+                    @Html.TextBoxFor(m => m.Nimetus)
+                    @Html.ValidationMessageFor(m => m.Nimetus)
+               </li>
+               <li>
+                    @Html.LabelFor(m => m.Tahis)
+                    @Html.TextBoxFor(m => m.Tahis)
+                    @Html.ValidationMessageFor(m => m.Tahis)
+               </li>
+            </ol>
+            <input type="submit" value="Salvesta" />
+        </fieldset>
+    }
+</section>
+<br />
+
+@Html.ActionLink("Tagasi","LisaLinn", "Linnad")
+
+

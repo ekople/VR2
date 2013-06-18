@@ -1,0 +1,573 @@
+CREATE TABLE Roll(
+ ID	INTEGER NOT NULL,
+ Nimetus VARCHAR(20) NOT NULL UNIQUE,
+ Kirjeldus VARCHAR(50) NOT NULL,
+ CONSTRAINT pk_Roll PRIMARY KEY (ID)
+);
+
+CREATE TABLE Kasutaja(
+ ID INTEGER NOT NULL,
+ KasutajaNimi VARCHAR(20) NOT NULL UNIQUE,
+ PsswdHash VARCHAR(200) NOT NULL,
+ AlgusKP DATE NOT NULL,
+ LoppKP	DATE,
+ RollID INTEGER NOT NULL,
+ IsikID INTEGER NOT NULL UNIQUE,
+ SessionHandle VARCHAR(50),
+ SessionValidTo DATE,
+ CONSTRAINT PK_Kasutaja PRIMARY KEY (ID) 
+);
+
+CREATE TABLE Riik(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Tahis	CHARACTER(3) NOT NULL UNIQUE,
+	CONSTRAINT	pk_Riik PRIMARY KEY (ID)
+);
+
+CREATE TABLE Linn(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	RiikID	INTEGER NOT NULL,
+	CONSTRAINT	pk_Linn PRIMARY KEY (ID)
+);
+
+CREATE TABLE Hoone(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Aadress	VARCHAR(200) NOT NULL,
+	ValvelauaKontaktTelefon	INTEGER UNIQUE,
+	LinnID	INTEGER NOT NULL,
+	CONSTRAINT	pk_Hoone PRIMARY KEY (ID)
+);
+
+CREATE TABLE OsakondLiik(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Kirjeldus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_OsakondLiik PRIMARY KEY (ID)
+);
+
+CREATE TABLE Amet(
+	ID	INTEGER NOT NULL,
+	OsakondID	INTEGER NOT NULL,
+	AmetiNimetus	VARCHAR(100) NOT NULL,
+	TegevuseKirjeldus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Amet PRIMARY KEY (ID)
+);
+
+CREATE TABLE Tootamine(
+	ID	INTEGER NOT NULL,
+	AmetID	INTEGER NOT NULL,
+	IsikID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	Tooaeg	DECIMAL(3,2) NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	TootajaPalk	NUMERIC(8,2) NOT NULL,
+	TootajaPalkValuuta	CHARACTER(3) NOT NULL,
+	CONSTRAINT	pk_Tootamine PRIMARY KEY (ID)
+);
+
+CREATE TABLE Isik(
+	ID	INTEGER NOT NULL,
+	Eesnimi	VARCHAR(40) NOT NULL,
+	Perenimi	VARCHAR(40) NOT NULL,
+	Isikukood	VARCHAR(30) NOT NULL UNIQUE,
+	EMail	VARCHAR(50),
+	KontaktTelefon	INTEGER,
+	SynniKP	DATE NOT NULL,
+	CONSTRAINT	pk_Isik PRIMARY KEY (ID)
+);
+
+CREATE TABLE IsikGraafik(
+	ID	INTEGER NOT NULL,
+	AtribuutikaID	INTEGER,
+	OsakondID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	Kommentaar	VARCHAR(MAX),
+	IsikID	INTEGER NOT NULL,
+	CONSTRAINT	pk_IsikGraafik PRIMARY KEY (ID)
+);
+
+CREATE TABLE TellitavTooraine(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Kirjeldus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	TooraineMaxTempC	INTEGER,
+	CONSTRAINT	pk_TellitavTooraine PRIMARY KEY (ID)
+);
+
+CREATE TABLE TellimuseRida(
+	ID	INTEGER NOT NULL,
+	TellimusID	INTEGER NOT NULL,
+	TellitavTooraineID	INTEGER NOT NULL,
+	KogusMass	INTEGER NOT NULL,
+	KogusMassIndikaator	CHARACTER(3) NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	Hind	NUMERIC(8,2),
+	HindValuuta	CHARACTER(3),
+	CONSTRAINT	pk_TellimuseRida PRIMARY KEY (ID)
+);
+
+CREATE TABLE Tellimus(
+	ID	INTEGER NOT NULL,
+	TarnijaID	INTEGER NOT NULL,
+	Esitaja	VARCHAR(81) NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	TellimusKood VARCHAR(20) UNIQUE,
+	CONSTRAINT	pk_Tellimus PRIMARY KEY (ID)
+);
+
+CREATE TABLE TarnijaPiirkond(
+	ID	INTEGER NOT NULL,
+	LinnID	INTEGER NOT NULL,
+	TarnijaID	INTEGER NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_TarnijaPiirkond PRIMARY KEY (ID)
+);
+
+CREATE TABLE Tarnija(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	KontaktIsik	VARCHAR(81) NOT NULL,
+	EMail	VARCHAR(50),
+	Telefon	INTEGER,
+	Faks	INTEGER,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Tarnija PRIMARY KEY (ID)
+);
+
+CREATE TABLE SaatelehtRida(
+	ID	INTEGER NOT NULL,
+	SaatelehtID	INTEGER NOT NULL,
+	TellitavTooraineID	INTEGER NOT NULL,
+	TooraineKogusMass	INTEGER NOT NULL,
+	KogusMassIndikaator	CHARACTER(3) NOT NULL,
+	CONSTRAINT	pk_SaatelehtRida PRIMARY KEY (ID)
+);
+CREATE TABLE Saateleht(
+	ID	INTEGER NOT NULL,
+	TarnijaID	INTEGER NOT NULL,
+	HooneID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	VastuVotja	VARCHAR(81) NOT NULL,
+	Kommentaarid	VARCHAR(MAX),
+	CONSTRAINT	pk_Saateleht PRIMARY KEY (ID)
+);
+
+CREATE TABLE TarnijaTarnitavKaup(
+	ID	INTEGER NOT NULL,
+	TellitavTooraineID	INTEGER NOT NULL,
+	TarnijaID	INTEGER NOT NULL,
+	MinKogusMass	INTEGER,
+	MaxKogusMass	INTEGER,
+	KogusMassIndikaator	CHARACTER(3),
+	MaxTarneAegPaevad	INTEGER,
+	MaxTarneAegTunnid	INTEGER,
+	Kommentaarid	VARCHAR(MAX),
+	TarnijaHind	NUMERIC(8,2) NOT NULL,
+	TarnijaHindValuuta	CHARACTER(3) NOT NULL,
+	TarnijaHindKogusIndikaator	CHARACTER(3) NOT NULL,
+	TarnijaHindKogus	INTEGER NOT NULL,
+	CONSTRAINT	pk_TarnijaTarnitavKaup PRIMARY KEY (ID)
+);
+
+CREATE TABLE Osakond(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	HooneID	INTEGER NOT NULL,
+	OsakondLiikID	INTEGER NOT NULL,
+	CONSTRAINT	pk_Osakond PRIMARY KEY (ID)
+);
+
+CREATE TABLE TarneSobivus(
+	ID	INTEGER NOT NULL,
+	SaatelehtRidaID	INTEGER NOT NULL,
+	TooraineTestidID	INTEGER NOT NULL,
+	LabisTesti	bit,
+	Kontrollija	VARCHAR(81) NOT NULL,
+	TestTeostatudKP	DATE NOT NULL,
+	CONSTRAINT	pk_TarneSobivus PRIMARY KEY (ID)
+);
+
+CREATE TABLE TooraineTestid(
+	ID	INTEGER NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	LubatavNominaal	NUMERIC(8,2) NOT NULL,
+	TestidID	INTEGER NOT NULL,
+	TellitavTooraineID	INTEGER NOT NULL,
+	CONSTRAINT	pk_TooraineTestid PRIMARY KEY (ID)
+);
+
+CREATE TABLE Klient(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	KliendiGruppID	INTEGER,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Klient PRIMARY KEY (ID)
+);
+
+CREATE TABLE Kliendigrupp(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Kirjeldus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Kliendigrupp PRIMARY KEY (ID)
+);
+
+CREATE TABLE TooteHind(
+	ID	INTEGER NOT NULL,
+	TooteLiikID	INTEGER NOT NULL,
+	KlientID	INTEGER,
+	KliendiGruppID	INTEGER,
+	Hind	NUMERIC(8,2) NOT NULL,
+	KogusMass	INTEGER NOT NULL,
+	KogusMassIndikaator	CHARACTER(3) NOT NULL,
+	HindValuuta	CHARACTER(3) NOT NULL,
+	CONSTRAINT	pk_TooteHind PRIMARY KEY (ID)
+);
+
+CREATE TABLE Arve(
+	ID	INTEGER NOT NULL,
+	ArveNR	VARCHAR(20) NOT NULL UNIQUE,
+	ArveKoostamiseKP	DATE NOT NULL,
+	ArveKoostaja	VARCHAR(81) NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	KlientID	INTEGER NOT NULL,
+	CONSTRAINT	pk_Arve PRIMARY KEY (ID)
+);
+
+CREATE TABLE ArveRida(
+	ID	INTEGER NOT NULL,
+	TooteLiikID	INTEGER NOT NULL,
+	MassMaht	INTEGER NOT NULL,
+	ArveID	INTEGER NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	VeoTellimusID	INTEGER,
+	MassMahtIndikaator	CHARACTER(3) NOT NULL,
+	ArvestatudHind	NUMERIC(8,2) NOT NULL,
+	CONSTRAINT	pk_ArveRida PRIMARY KEY (ID)
+);
+
+CREATE TABLE TooAtribuutika(
+	ID	INTEGER NOT NULL,
+	AtribuutikaID	INTEGER NOT NULL,
+	IsikID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	CONSTRAINT	pk_TooAtribuutika PRIMARY KEY (ID)
+);
+
+CREATE TABLE VeoTellimus(
+	ID	INTEGER NOT NULL,
+	KontaktID	INTEGER NOT NULL,
+	HooneID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	Lisaja	VARCHAR(81) NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	VeoTeostamiseTahtaeg	DATE,
+	CONSTRAINT	pk_VeoTellimus PRIMARY KEY (ID)
+);
+
+CREATE TABLE KaubaVedu(
+	ID	INTEGER NOT NULL,
+	HooneID	INTEGER NOT NULL,
+	KontaktID	INTEGER NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	CONSTRAINT	pk_KaubaVedu PRIMARY KEY (ID)
+);
+
+CREATE TABLE VedavadAutod(
+	ID	INTEGER NOT NULL,
+	KaubaVeduID	INTEGER NOT NULL,
+	IsikGraafikID	INTEGER NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_VedavadAutod PRIMARY KEY (ID)
+);
+
+CREATE TABLE KlientKontakt(
+	ID	INTEGER NOT NULL,
+	KontaktID	INTEGER NOT NULL,
+	KlientID	INTEGER NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_KlientKontakt PRIMARY KEY (ID)
+);
+
+CREATE TABLE Kontakt(
+	ID	INTEGER NOT NULL,
+	LinnID	INTEGER NOT NULL,
+	Aadress	VARCHAR(200) NOT NULL,
+	KontaktTelefon	INTEGER,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Kontakt PRIMARY KEY (ID)
+);
+
+CREATE TABLE TellimusAutos(
+	ID	INTEGER NOT NULL,
+	VedavadAutodID	INTEGER,
+	Kommentaar	VARCHAR(MAX),
+	VeoTellimusID	INTEGER NOT NULL,
+	TellimusVastuVoetud	DATE NOT NULL,
+	TellimusKohaleToimetatud	DATE,
+	CONSTRAINT	pk_TellimusAutos PRIMARY KEY (ID)
+);
+
+CREATE TABLE Asutus(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	LiikID	INTEGER NOT NULL UNIQUE,
+	KontaktIsik	VARCHAR(81) NOT NULL,
+	Email	VARCHAR(50),
+	KontaktTelefon	BIGINT,
+	Faks	BIGINT,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Asutus PRIMARY KEY (ID)
+);
+
+CREATE TABLE Hooldus(
+	ID	INTEGER NOT NULL,
+	IsikID	INTEGER,
+	AtribuutikaID	INTEGER NOT NULL,
+	AsutusID	INTEGER,
+	HoolduseTeostamiseKP	DATE NOT NULL,
+	HooldusePohjendus	VARCHAR(300) NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	HoolduseTulemus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Hooldus PRIMARY KEY (ID)
+);
+
+CREATE TABLE TehtudTood(
+	ID	INTEGER NOT NULL,
+	TooKirjeldus	VARCHAR(300) NOT NULL,
+	TooMaksumus	NUMERIC(8,2) NOT NULL,
+	TooMaksumusValuuta	CHARACTER(3) NOT NULL,
+	TooAlustamiseKP	DATE NOT NULL,
+	TooLoppKP	DATE NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	HooldusID INTEGER NOT NULL,
+	CONSTRAINT	pk_TehtudTood PRIMARY KEY (ID)
+);
+
+CREATE TABLE Atribuutika(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	JargmineHooldusKP	DATE NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	SeeriaNR_KereNR	VARCHAR(20) NOT NULL,
+	Kood	INTEGER,
+	RegistriKood	VARCHAR(20),
+	MaxVeovoime	INTEGER,
+	VeovoimeYhikIndikaator	CHARACTER(3),
+	AtribuutikaLiikID	INTEGER NOT NULL,
+	Kategooria	VARCHAR(5),
+	CONSTRAINT	pk_Atribuutika PRIMARY KEY (ID)
+);
+
+CREATE TABLE AtribuutikaOsakonnas(
+	ID	INTEGER NOT NULL,
+	OsakondID	INTEGER NOT NULL,
+	AtribuutikaID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_AtribuutikaOsakonnas PRIMARY KEY (ID)
+);
+
+CREATE TABLE Kutusekaart(
+	ID	INTEGER NOT NULL,
+	AsutusID	INTEGER NOT NULL,
+	KutuseKaardiNR	INTEGER NOT NULL UNIQUE,
+	KuuLimiit	NUMERIC(8,2),
+	CONSTRAINT	pk_Kutusekaart PRIMARY KEY (ID)
+);
+
+CREATE TABLE KutusekaardiValdaja(
+	ID	INTEGER NOT NULL,
+	IsikID	INTEGER NOT NULL,
+	KutusekaartID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_KutusekaardiValdaja PRIMARY KEY (ID)
+);
+
+CREATE TABLE KutuseOst(
+	ID	INTEGER NOT NULL,
+	KutusekaartID	INTEGER NOT NULL,
+	OstuTeostamiseKP	DATE NOT NULL,
+	OstuMaksumus	NUMERIC(8,2) NOT NULL,
+	OStuMaksumusValuuta	CHARACTER(3) NOT NULL,
+	Esindus	VARCHAR(150) NOT NULL,
+	CONSTRAINT	pk_KutuseOst PRIMARY KEY (ID)
+);
+
+CREATE TABLE Liik(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Kirjeldus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Liik PRIMARY KEY (ID)
+);
+
+CREATE TABLE TooraineLiikumine(
+	ID	INTEGER NOT NULL,
+	OsakondID	INTEGER NOT NULL,
+	SaateleheRidaID	INTEGER NOT NULL,
+	LiikumiseKP	DATE NOT NULL,
+	LiigutatavMahtKogus	INTEGER NOT NULL,
+	LiigutatavMahtKogusIndikaator	CHARACTER(3) NOT NULL,
+	CONSTRAINT	pk_TooraineLiikumine PRIMARY KEY (ID)
+);
+
+CREATE TABLE OsakondValjund(
+	ID	INTEGER NOT NULL,
+	TooteLiikID	INTEGER NOT NULL,
+	OsakondID	INTEGER NOT NULL,
+	LisamiseKP	DATE NOT NULL,
+	MassKogus	INTEGER NOT NULL,
+	ValjundKogusMahtKLID	INTEGER NOT NULL,
+	CONSTRAINT	pk_OsakondValjund PRIMARY KEY (ID)
+);
+
+CREATE TABLE TooteLiikumine(
+	ID	INTEGER NOT NULL,
+	OsakondValjundID	INTEGER NOT NULL,
+	OsakondID	INTEGER NOT NULL,
+	LiikumiseKP	DATE NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	LiikuvMassKogus	INTEGER NOT NULL,
+	CONSTRAINT	pk_TooteLiikumine PRIMARY KEY (ID)
+);
+
+CREATE TABLE TooteLiik(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Kirjeldus	VARCHAR(300),
+	ProduktMassMahtIndikaator	CHARACTER(3) NOT NULL,
+	HoiustamisTempC	INTEGER NOT NULL,
+	CONSTRAINT	pk_TooteLiik PRIMARY KEY (ID)
+);
+
+CREATE TABLE Puudumine(
+	ID	INTEGER NOT NULL,
+	AlgusKP	DATE NOT NULL,
+	LoppKP	DATE,
+	IsikID	INTEGER NOT NULL,
+	PuudumineLiikID	INTEGER NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	Pohjendus	VARCHAR(300),
+	CONSTRAINT	pk_Puudumine PRIMARY KEY (ID)
+);
+
+CREATE TABLE PuudumineLiik(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Kommentaar	VARCHAR(MAX),
+	Tasuline	bit NOT NULL,
+	TooAasta_PuhkusePaevad_Suhe	INTEGER,
+	CONSTRAINT	pk_PuudumineLiik PRIMARY KEY (ID)
+);
+
+CREATE TABLE AtribuutikaLiik(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	IsikugaSeostatav	bit NOT NULL,
+	Kommentaar	VARCHAR(MAX),
+	Kirjeldus	VARCHAR(300),
+	CONSTRAINT	pk_AtribuutikaLiik PRIMARY KEY (ID)
+);
+
+CREATE TABLE ValjundKogusMahtKL(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Tahis	CHARACTER(3) NOT NULL UNIQUE,
+	Kirjeldus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_ValjundKogusMahtKL PRIMARY KEY (ID)
+);
+
+CREATE TABLE Testid(
+	ID	INTEGER NOT NULL,
+	Nimetus	VARCHAR(150) NOT NULL UNIQUE,
+	Kirjeldus	VARCHAR(300),
+	Kommentaar	VARCHAR(MAX),
+	CONSTRAINT	pk_Testid PRIMARY KEY (ID)
+);
+
+ALTER TABLE Kasutaja ADD CONSTRAINT fk1_Kasutaja_to_Roll FOREIGN KEY(RollID) REFERENCES Roll(ID);
+ALTER TABLE Kasutaja ADD CONSTRAINT fk2_Kasutaja_to_Isik FOREIGN KEY(IsikID) REFERENCES Isik(ID);
+ALTER TABLE Linn ADD CONSTRAINT fk1_Linn_to_Riik FOREIGN KEY(RiikID) REFERENCES Riik(ID);
+ALTER TABLE Hoone ADD CONSTRAINT fk1_HooneLinn FOREIGN KEY(LinnID) REFERENCES Linn(ID);
+ALTER TABLE Tootamine ADD CONSTRAINT fk1_TootamineIsik FOREIGN KEY(IsikID) REFERENCES Isik(ID);
+ALTER TABLE Tootamine ADD CONSTRAINT fk2_TootamineAmet FOREIGN KEY(AmetID) REFERENCES Amet(ID);
+ALTER TABLE IsikGraafik ADD CONSTRAINT fk1_IsikGraafikIsik FOREIGN KEY(IsikID) REFERENCES Isik(ID);
+ALTER TABLE TarnijaPiirkond ADD CONSTRAINT fk1_TarnijaPiirkondLinn FOREIGN KEY(LinnID) REFERENCES Linn(ID);
+ALTER TABLE TarnijaPiirkond ADD CONSTRAINT fk2_TarnijaPiirkondTarnija FOREIGN KEY(TarnijaID) REFERENCES Tarnija(ID);
+ALTER TABLE Tellimus ADD CONSTRAINT fk1_TellimusTarnija FOREIGN KEY(TarnijaID) REFERENCES Tarnija(ID);
+ALTER TABLE TellimuseRida ADD CONSTRAINT fk1_TellimuseRidaTellimus FOREIGN KEY(TellimusID) REFERENCES Tellimus(ID);
+ALTER TABLE TellimuseRida ADD CONSTRAINT fk2_TellimuseRidaTooraine FOREIGN KEY(TellitavTooraineID) REFERENCES TellitavTooraine(ID);
+ALTER TABLE SaatelehtRida ADD CONSTRAINT fk1_SaatelehtRidaTooraine FOREIGN KEY(TellitavTooraineID) REFERENCES TellitavTooraine(ID);
+ALTER TABLE SaatelehtRida ADD CONSTRAINT fk2_SaatelehtRidaSaateleht FOREIGN KEY(SaatelehtID) REFERENCES Saateleht(ID);
+ALTER TABLE Saateleht ADD CONSTRAINT fk1_SaatelehtTarnija FOREIGN KEY(TarnijaID) REFERENCES Tarnija(ID);
+ALTER TABLE TarnijaTarnitavKaup ADD CONSTRAINT fk1_TarnijaTarnitavKaupTarnija FOREIGN KEY(TarnijaID) REFERENCES Tarnija(ID);
+ALTER TABLE TarnijaTarnitavKaup ADD CONSTRAINT fk2_TarnijaTooraine FOREIGN KEY(TellitavTooraineID) REFERENCES TellitavTooraine(ID);
+ALTER TABLE Saateleht ADD CONSTRAINT fk2_SaatelehtHoone FOREIGN KEY(HooneID) REFERENCES Hoone(ID);
+ALTER TABLE Osakond ADD CONSTRAINT fk1_OsakondHoone FOREIGN KEY(HooneID) REFERENCES Hoone(ID);
+ALTER TABLE Amet ADD CONSTRAINT fk1_AmetOsakond FOREIGN KEY(OsakondID) REFERENCES Osakond(ID);
+ALTER TABLE TarneSobivus ADD CONSTRAINT fk1_TarneSobivusSaatelehtRida FOREIGN KEY(SaatelehtRidaID) REFERENCES SaatelehtRida(ID);
+ALTER TABLE TarneSobivus ADD CONSTRAINT fk2_TarneSobivusTooraineTestid FOREIGN KEY(TooraineTestidID) REFERENCES TooraineTestid(ID);
+ALTER TABLE TooraineTestid ADD CONSTRAINT fk1_TooraineTestidTooraine FOREIGN KEY(TellitavTooraineID) REFERENCES TellitavTooraine(ID);
+ALTER TABLE ArveRida ADD CONSTRAINT fk1_ArveRidaArve FOREIGN KEY(ArveID) REFERENCES Arve(ID);
+ALTER TABLE Klient ADD CONSTRAINT fk1_KlientKliendigrupp FOREIGN KEY(KliendigruppID) REFERENCES Kliendigrupp(ID);
+ALTER TABLE Arve ADD CONSTRAINT fk1_ArveKlient FOREIGN KEY(KlientID) REFERENCES Klient(ID);
+ALTER TABLE TooAtribuutika ADD CONSTRAINT fk1_TooAtribuutikaIsik FOREIGN KEY(IsikID) REFERENCES Isik(ID);
+ALTER TABLE VedavadAutod ADD CONSTRAINT fk1_VedavadAutodIsikGraafik FOREIGN KEY(IsikGraafikID) REFERENCES IsikGraafik(ID);
+ALTER TABLE VedavadAutod ADD CONSTRAINT fk2_VedavadAutodKaubaVedu FOREIGN KEY(KaubaVeduID) REFERENCES KaubaVedu(ID);
+ALTER TABLE KlientKontakt ADD CONSTRAINT fk1_KlientKontaktKlient FOREIGN KEY(KlientID) REFERENCES Klient(ID);
+ALTER TABLE KlientKontakt ADD CONSTRAINT fk2_KlientKontaktKontakt FOREIGN KEY(KontaktID) REFERENCES Kontakt(ID);
+ALTER TABLE KaubaVedu ADD CONSTRAINT fk1_KaubaVeduKontakt FOREIGN KEY(KontaktID) REFERENCES Kontakt(ID);
+ALTER TABLE KaubaVedu ADD CONSTRAINT fk2_KaubaVeduHoone FOREIGN KEY(HooneID) REFERENCES Hoone(ID);
+ALTER TABLE TellimusAutos ADD CONSTRAINT fk1_TellimusAutosVeoTellimus FOREIGN KEY(VeoTellimusID) REFERENCES VeoTellimus(ID);
+ALTER TABLE TellimusAutos ADD CONSTRAINT fk2_TellimusAutosVedavadAutod FOREIGN KEY(VedavadAutodID) REFERENCES VedavadAutod(ID);
+ALTER TABLE VeoTellimus ADD CONSTRAINT fk1_VeoTellimusKontakt FOREIGN KEY(KontaktID) REFERENCES Kontakt(ID);
+ALTER TABLE VeoTellimus ADD CONSTRAINT fk2_VeoTellimusHoone FOREIGN KEY(HooneID) REFERENCES Hoone(ID);
+ALTER TABLE Kontakt ADD CONSTRAINT fk1_KontaktLinn FOREIGN KEY(LinnID) REFERENCES Linn(ID);
+ALTER TABLE Hooldus ADD CONSTRAINT fk1_HooldusAsutus FOREIGN KEY(AsutusID) REFERENCES Asutus(ID);
+ALTER TABLE TehtudTood ADD CONSTRAINT fk1_TehtudToodHooldus FOREIGN KEY(HooldusID) REFERENCES Hooldus(ID);
+ALTER TABLE AtribuutikaOsakonnas ADD CONSTRAINT fk1_AtribuutikaOsakond FOREIGN KEY(OsakondID) REFERENCES Osakond(ID) ;
+ALTER TABLE AtribuutikaOsakonnas ADD CONSTRAINT fk2_AtribuutikaOsakonnas FOREIGN KEY(AtribuutikaID) REFERENCES Atribuutika(ID);
+ALTER TABLE Hooldus ADD CONSTRAINT fk2_HooldusAtribuutika FOREIGN KEY(AtribuutikaID) REFERENCES Atribuutika(ID);
+ALTER TABLE Hooldus ADD CONSTRAINT fk3_HooldusIsik FOREIGN KEY(IsikID) REFERENCES Isik(ID);
+ALTER TABLE Osakond ADD CONSTRAINT fk2_OsakondOsakondLiik FOREIGN KEY(OsakondLiikID) REFERENCES OsakondLiik(ID) ;
+ALTER TABLE KutusekaardiValdaja ADD CONSTRAINT fk1_KutusekaardiValdajaIsik FOREIGN KEY(IsikID) REFERENCES Isik(ID);
+ALTER TABLE KutusekaardiValdaja ADD CONSTRAINT fk2_KkaardiValdKutusekaart FOREIGN KEY(KutusekaartID) REFERENCES Kutusekaart(ID);
+ALTER TABLE Kutusekaart ADD CONSTRAINT fk1_KutusekaartAsutus FOREIGN KEY(AsutusID) REFERENCES Asutus(ID);
+ALTER TABLE KutuseOst ADD CONSTRAINT fk1_KutuseOstKutusekaart FOREIGN KEY(KutusekaartID) REFERENCES Kutusekaart(ID);
+ALTER TABLE Asutus ADD CONSTRAINT fk1_AsutusLiik FOREIGN KEY(LiikID) REFERENCES Liik(ID);
+ALTER TABLE TooraineLiikumine ADD CONSTRAINT fk1_TooraineLiikumineOsakond FOREIGN KEY(OsakondID) REFERENCES Osakond(ID);
+ALTER TABLE TooraineLiikumine ADD CONSTRAINT fk2_TLSRida FOREIGN KEY(SaateleheRidaID) REFERENCES SaatelehtRida(ID);
+ALTER TABLE OsakondValjund ADD CONSTRAINT fk1_OsakondValjundOsakond FOREIGN KEY(osakondID) REFERENCES Osakond(ID);
+ALTER TABLE TooteLiikumine ADD CONSTRAINT fk1_LiikumineOsakond FOREIGN KEY(OsakondValjundID) REFERENCES OsakondValjund(ID);
+ALTER TABLE TooteLiikumine ADD CONSTRAINT fk2_TooteLiikumineOsakond FOREIGN KEY(OsakondID) REFERENCES Osakond(ID);
+ALTER TABLE OsakondValjund ADD CONSTRAINT fk2_OsakondValjundTooteLiik FOREIGN KEY(TooteLiikID) REFERENCES TooteLiik(ID);
+ALTER TABLE ArveRida ADD CONSTRAINT fk2_ArveRidaTooteLiik FOREIGN KEY(TooteLiikID) REFERENCES TooteLiik(ID);
+ALTER TABLE TooteHind ADD CONSTRAINT fk1_TooteHindTooteLiik FOREIGN KEY(TooteLiikID) REFERENCES TooteLiik(ID);
+ALTER TABLE Puudumine ADD CONSTRAINT fk1_PuuduminePuudumineLiik FOREIGN KEY(PuudumineLiikID) REFERENCES PuudumineLiik(ID);
+ALTER TABLE Puudumine ADD CONSTRAINT fk2_PuudumineIsik FOREIGN KEY(IsikID) REFERENCES Isik(ID);
+ALTER TABLE Atribuutika ADD CONSTRAINT fk1_AtribuutikaAtribuutikaLiik FOREIGN KEY(AtribuutikaLiikID) REFERENCES AtribuutikaLiik(ID);
+ALTER TABLE OsakondValjund ADD CONSTRAINT fk3_OsakValjKogMahtKL FOREIGN KEY(ValjundKogusMahtKLID) REFERENCES ValjundKogusMahtKL(ID);
+ALTER TABLE IsikGraafik ADD CONSTRAINT fk2_IsikGraafikAtribuutika FOREIGN KEY(AtribuutikaID) REFERENCES Atribuutika(ID);
+ALTER TABLE TooAtribuutika ADD CONSTRAINT fk2_TooAtribuutikaAtribuutika FOREIGN KEY(AtribuutikaID) REFERENCES Atribuutika(ID);
+ALTER TABLE IsikGraafik ADD CONSTRAINT fk3_IsikGraafikOsakond FOREIGN KEY(OsakondID) REFERENCES Osakond(ID);
+ALTER TABLE TooraineTestid ADD CONSTRAINT fk2_TooraineTestidTestid FOREIGN KEY(TestidID) REFERENCES Testid(ID);

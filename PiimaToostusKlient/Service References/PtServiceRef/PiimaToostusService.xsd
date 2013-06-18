@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52063/PiimaToostusService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PiimaToostusService" />
+  <xs:element name="AddRiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="riik" nillable="true" type="q1:Riik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddRiikResult" nillable="true" type="q2:ModRiikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveRiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="riikId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveRiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveRiikResult" nillable="true" type="q3:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="riik" nillable="true" type="q4:Riik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateRiikResult" nillable="true" type="q5:ModRiikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAtribuutika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAtribuutikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllAtribuutikaResult" nillable="true" type="q6:ModGetAllAtribuutikaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAtribuutikaLiigid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllAtribuutikaLiigidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllAtribuutikaLiigidResult" nillable="true" type="q7:ModGetAllAtribuutikaLiigidResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllHooned">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllHoonedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllHoonedResult" nillable="true" type="q8:ModGetAllHoonedResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllIsikud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllIsikudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllIsikudResult" nillable="true" type="q9:ModGetAllIsikudResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllIsikuGraafikud">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllIsikuGraafikudResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllIsikuGraafikudResult" nillable="true" type="q10:ModGetAllIsikuGraafikudResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllLinnad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllLinnadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllLinnadResult" nillable="true" type="q11:ModGetAllLinnadResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllOsakonnad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllOsakonnadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllOsakonnadResult" nillable="true" type="q12:ModGetAllOsakonnadResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllOsakonnaLiigid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllOsakonnaLiigidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllOsakonnaLiigidResult" nillable="true" type="q13:ModGetAllOsakonnaLiigidResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRiigid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRiigidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllRiigidResult" nillable="true" type="q14:ModGetAllRiigidResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRollid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRollidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllRollidResult" nillable="true" type="q15:ModGetAllRollidResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="GetAllUsersResult" nillable="true" type="q16:ModGetAllUsersResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="psswdHash" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AuthUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AuthUserResult" nillable="true" type="q17:AuthResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddIsik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="isik" nillable="true" type="q18:Isik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddIsikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddIsikResult" nillable="true" type="q19:ModIsikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveIsik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isikId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveIsikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveIsikResult" nillable="true" type="q20:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIsik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="isik" nillable="true" type="q21:Isik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIsikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateIsikResult" nillable="true" type="q22:ModIsikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="user" nillable="true" type="q23:Kasutaja" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddUserResult" nillable="true" type="q24:ModUserResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveUserResult" nillable="true" type="q25:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="user" nillable="true" type="q26:Kasutaja" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateUserResult" nillable="true" type="q27:ModUserResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAtribuutika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="atribuutika" nillable="true" type="q28:Atribuutika" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAtribuutikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddAtribuutikaResult" nillable="true" type="q29:ModAtribuutikaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAtribuutika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="atribuutikaId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAtribuutikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveAtribuutikaResult" nillable="true" type="q30:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAtribuutika">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="atribuutika" nillable="true" type="q31:Atribuutika" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAtribuutikaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateAtribuutikaResult" nillable="true" type="q32:ModAtribuutikaResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAtribuutikaLiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="atribuutikaLiik" nillable="true" type="q33:AtribuutikaLiik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAtribuutikaLiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddAtribuutikaLiikResult" nillable="true" type="q34:ModAtribuutikaLiikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAtribuutikaLiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="atribuutikaLiikId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAtribuutikaLiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveAtribuutikaLiikResult" nillable="true" type="q35:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAtribuutikaLiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="atribuutikaLiik" nillable="true" type="q36:AtribuutikaLiik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAtribuutikaLiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateAtribuutikaLiikResult" nillable="true" type="q37:ModAtribuutikaLiikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddHoone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="hoone" nillable="true" type="q38:Hoone" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddHooneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddHooneResult" nillable="true" type="q39:ModHooneResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveHoone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hooneId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveHooneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveHooneResult" nillable="true" type="q40:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHoone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="hoone" nillable="true" type="q41:Hoone" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHooneResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateHooneResult" nillable="true" type="q42:ModHooneResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddIsikGraafik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="isikGraafik" nillable="true" type="q43:IsikGraafik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddIsikGraafikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddIsikGraafikResult" nillable="true" type="q44:ModIsikGraafikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveIsikGraafik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isikGraafikId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveIsikGraafikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveIsikGraafikResult" nillable="true" type="q45:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIsikGraafik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="isikGraafik" nillable="true" type="q46:IsikGraafik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIsikGraafikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateIsikGraafikResult" nillable="true" type="q47:ModIsikGraafikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLinn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="linn" nillable="true" type="q48:Linn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddLinnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddLinnResult" nillable="true" type="q49:ModLinnResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveLinn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="linnId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveLinnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveLinnResult" nillable="true" type="q50:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLinn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="linn" nillable="true" type="q51:Linn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLinnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateLinnResult" nillable="true" type="q52:ModLinnResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOsakond">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="osakond" nillable="true" type="q53:Osakond" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOsakondResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddOsakondResult" nillable="true" type="q54:ModOsakondResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOsakond">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="osakond" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOsakondResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveOsakondResult" nillable="true" type="q55:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOsakond">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="osakond" nillable="true" type="q56:Osakond" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOsakondResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateOsakondResult" nillable="true" type="q57:ModOsakondResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOsakondLiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="osakondLiik" nillable="true" type="q58:OsakondLiik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddOsakondLiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="AddOsakondLiikResult" nillable="true" type="q59:ModOsakondLiikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOsakondLiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="osakondLiikId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveOsakondLiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="RemoveOsakondLiikResult" nillable="true" type="q60:StandardResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOsakondLiik">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sessionHandle" nillable="true" type="xs:string" />
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="osakondLiik" nillable="true" type="q61:OsakondLiik" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOsakondLiikResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/PiimaToostusService" minOccurs="0" name="UpdateOsakondLiikResult" nillable="true" type="q62:ModOsakondLiikResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

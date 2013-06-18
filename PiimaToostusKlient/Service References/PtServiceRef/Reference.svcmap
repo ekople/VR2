@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="928e03f8-1af2-4922-8db6-742ae1a60603" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52063/PiimaToostusService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PiimaToostusService.xsd" MetadataType="Schema" ID="b127c209-4cca-41b3-b0cc-667e8e86e20b" SourceId="1" SourceUrl="http://localhost:52063/PiimaToostusService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PiimaToostusService.wsdl" MetadataType="Wsdl" ID="43515c90-e3af-4824-872b-65f4c0cc9a64" SourceId="1" SourceUrl="http://localhost:52063/PiimaToostusService.svc?wsdl" />
+    <MetadataFile FileName="PiimaToostusService.disco" MetadataType="Disco" ID="ee89a603-a9f2-4756-8b2d-e434e6748d58" SourceId="1" SourceUrl="http://localhost:52063/PiimaToostusService.svc?disco" />
+    <MetadataFile FileName="PiimaToostusService1.xsd" MetadataType="Schema" ID="b248f154-7473-491d-9961-2a694a66d8f9" SourceId="1" SourceUrl="http://localhost:52063/PiimaToostusService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PiimaToostusService2.xsd" MetadataType="Schema" ID="ed749450-8248-4d82-90cd-32df479d4f40" SourceId="1" SourceUrl="http://localhost:52063/PiimaToostusService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PiimaToostusService3.xsd" MetadataType="Schema" ID="c0189e31-04f6-4072-ba76-a874f6873986" SourceId="1" SourceUrl="http://localhost:52063/PiimaToostusService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

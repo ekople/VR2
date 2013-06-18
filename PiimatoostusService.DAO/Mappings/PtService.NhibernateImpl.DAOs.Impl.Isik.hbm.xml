@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                   xmlns='urn:nhibernate-mapping-2.2'>
+
+  <class name='PtService.NhibernateImpl.DAOs.Impl.Isik, PtService.NhibernateImpl' table='Isik'>
+
+    <id name='ID' column='ID' type='Int32' unsaved-value="0">
+      <generator class='identity' />
+    </id>
+
+    <property name='Eesnimi' type='String' column='Eesnimi' not-null="true" />
+    <property name='Perenimi' type='String' column='Perenimi' not-null="true" />
+    <property name='Isikukood' type='String' column='Isikukood' />
+    <property name='EMail' type='String' column='EMail' />
+    <property name='KontaktTelefon' type='Int32' column='KontaktTelefon' not-null="false" />
+    <property name='SynniKP' type='DateTime' column='SynniKP' not-null="false" />
+  </class>
+</hibernate-mapping>

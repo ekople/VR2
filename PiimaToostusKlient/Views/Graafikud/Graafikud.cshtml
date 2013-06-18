@@ -1,0 +1,50 @@
+﻿@model PiimaToostusKlient.Models.GraafikudModel
+@{
+    ViewBag.Title = "Graafikud";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Graafikud</h2><br /><br />
+
+<table border=1>
+    <tr>
+       <th>Atribuutika</th> 
+       <th>Osakond</th> 
+       <th>Isik</th> 
+       <th>Algus KP</th> 
+       <th>Lõpp KP</th> 
+       <th>Kommentaar</th> 
+       <th>Tegevused</th> 
+    </tr>
+    @if(Model.AllIsikGraafikud != null && Model.AllIsikGraafikud.Count != 0)
+    {
+        foreach(PiimaToostusKlient.PtServiceRef.IsikGraafik IskGrph in Model.AllIsikGraafikud)
+        {
+            <tr>
+                <td>@if(IskGrph.AtribuutikaID != null){ @IskGrph.AtribuutikaID.Nimetus }</td> 
+                <td>@if(IskGrph.OsakondID != null){ @IskGrph.OsakondID.Nimetus }</td> 
+                <td>@if(IskGrph.IsikID != null){ @IskGrph.IsikID.Eesnimi @IskGrph.IsikID.Perenimi }</td> 
+                <td>@PiimaToostusKlient.Utils.Utils.GetKuvatavDate(IskGrph.AlgusKP)</td> 
+                <td>@PiimaToostusKlient.Utils.Utils.GetKuvatavDate(IskGrph.LoppKP)</td> 
+                <td>@IskGrph.Kommentaar</td> 
+                <td>
+                    @Html.ActionLink("Muuda", "MuudaGraafikut", new { id = IskGrph.ID }, null)  
+                    @Html.ActionLink("Kustuta", "KustutaGraafik", new { id = IskGrph.ID }, null)
+                </td> 
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="11" align="center"><font size="3" color="red">Kirjed puuduvad!</font></td>
+        </tr>
+    }
+
+</table>
+<br />
+
+<br />
+@Html.ActionLink("Lisa uus graafik", "LisaGraafik")<br /><br />
+@Html.ActionLink("Tagasi pealehele", "WelcomePage", "Shared")
+

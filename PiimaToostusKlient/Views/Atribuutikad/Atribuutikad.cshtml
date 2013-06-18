@@ -1,0 +1,56 @@
+﻿@model PiimaToostusKlient.Models.AtribuutikadModel
+@{
+    ViewBag.Title = "Atribuutikad";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Atribuutikad</h2><br /><br />
+
+<table border=1>
+    <tr>
+       <th>Nimetus</th> 
+       <th>Järgmine hoolduse KP</th> 
+       <th>Kommentaar</th> 
+       <th>SeeriaNR/KereNR</th> 
+       <th>Kood</th> 
+       <th>Registrikood</th> 
+       <th>Max veovõime</th> 
+       <th>Veovõime ühik</th> 
+       <th>Liik</th> 
+       <th>Kategooria</th> 
+       <th>Tegevused</th> 
+    </tr>
+    @if(Model.AllAtribuutikad != null && Model.AllAtribuutikad.Count != 0)
+    {
+        foreach(PiimaToostusKlient.PtServiceRef.Atribuutika attrib in Model.AllAtribuutikad)
+        {
+            <tr>
+                <td>@attrib.Nimetus</td> 
+                <td>@PiimaToostusKlient.Utils.Utils.GetKuvatavDate(attrib.JargmineHooldusKP)</td> 
+                <td>@attrib.Kommentaar</td> 
+                <td>@attrib.SeeriaNR_KereNR</td> 
+                <td>@attrib.Kood</td> 
+                <td>@attrib.RegistriKood</td> 
+                <td>@attrib.MaxVeovoime</td> 
+                <td>@attrib.VeovoimeYhikIndikaator</td> 
+                <td>@if(attrib.AtribuutikaLiikID != null){ @attrib.AtribuutikaLiikID.Nimetus }</td> 
+                <td>@attrib.Kategooria</td> 
+                <td>
+                    @Html.ActionLink("Muuda", "MuudaAtribuutikat", new { id = attrib.ID }, null)  
+                    @Html.ActionLink("Kustuta", "KustutaAtribuutika", new { id = attrib.ID }, null)
+                </td> 
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="11" align="center"><font size="3" color="red">Kirjed puuduvad!</font></td>
+        </tr>
+    }
+
+</table>
+
+<br />
+@Html.ActionLink("Lisa uus atribuutika", "LisaAtribuutika")<br /><br />
+@Html.ActionLink("Tagasi pealehele", "WelcomePage", "Shared")

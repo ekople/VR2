@@ -1,0 +1,43 @@
+﻿@model PiimaToostusKlient.Models.LinnModel
+@{
+    ViewBag.Title = "LisaLinn";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Lisa voi muuda linna</h2><br /><br />
+<section id="AtribuutikaLiikForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend></legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Nimetus)
+                    @Html.TextBoxFor(m => m.Nimetus)
+                    @Html.ValidationMessageFor(m => m.Nimetus)
+               </li>
+               <li>
+                    @Html.LabelFor(m=>m.RiikID)
+                   
+                    @if (Model.Riigid == null)
+                    { @Html.DropDownList("Select", new SelectList(new[] { "-" }, "-")) }
+                    else
+                    { @Html.DropDownList("Select", Model.Riigid) }
+
+                    @Html.ValidationMessageFor(m => m.RiikID)
+                    @Html.ActionLink(" Lisa ", "LisaRiik", "Riigid")
+                    @Html.ActionLink(" Muuda ", "LisaRiik", "Riigid", new { id = 1 }, null)
+                    @Html.ActionLink(" Kustuta ", "LisaLinn", new { id = 1 }, null)
+               </li>
+            </ol>
+            <input type="submit" value="Salvesta" />
+        </fieldset>
+    }
+</section>
+<br />
+
+@Html.ActionLink("Tagasi","LisaHoone", "Hooned")
+
+

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                   xmlns='urn:nhibernate-mapping-2.2'>
+
+  <class name='PtService.NhibernateImpl.DAOs.Impl.IsikGraafik, PtService.NhibernateImpl' table='IsikGraafik'>
+
+    <id name='ID' column='ID' type='Int32' unsaved-value="0">
+      <generator class='identity' />
+    </id>
+
+    <many-to-one name="AtribuutikaID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.Atribuutika, PtService.NhibernateImpl"
+                 not-null="false" />
+
+    <many-to-one name="OsakondID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.Osakond, PtService.NhibernateImpl"
+                 not-null="true" />
+
+    <property name='AlgusKP' type='DateTime' column='AlgusKP' not-null="true" />
+    <property name='LoppKP' type='DateTime' column='LoppKP' not-null="false" />
+    <property name='Kommentaar' type='String' column='Kommentaar' />
+    <many-to-one name="IsikID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.Isik, PtService.NhibernateImpl"
+                 not-null="true" />
+  </class>
+</hibernate-mapping>

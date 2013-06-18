@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                   xmlns='urn:nhibernate-mapping-2.2'>
+
+  <class name='PtService.NhibernateImpl.DAOs.Impl.Hoone, PtService.NhibernateImpl' table='Hoone'>
+
+    <id name='ID' column='ID' type='Int32' unsaved-value="0">
+      <generator class='identity' />
+    </id>
+
+    <property name='Nimetus' type='String' column='Nimetus' not-null="true" />
+    <property name='Aadress' type='String' column='Aadress' />
+    <property name='ValvelauaKontaktTelefon' type='Int32' column='ValvelauaKontaktTelefon' not-null="false" />
+    <many-to-one name="LinnID" column="ID"
+                 class="PtService.NhibernateImpl.DAOs.Impl.Linn, PtService.NhibernateImpl"
+                 not-null="true" />
+  </class>
+</hibernate-mapping>

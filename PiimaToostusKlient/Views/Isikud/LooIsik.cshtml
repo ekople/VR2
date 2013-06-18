@@ -1,0 +1,70 @@
+﻿@model PiimaToostusKlient.Models.IsikModel
+@{
+    ViewBag.Title = "title";
+Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Loo voi muuda isikut</h2>
+<br />
+<br />
+
+<script>
+    $(function () {
+        $("#SynniKP").datepicker({
+
+            showOn: "button",
+            changeMonth: true,
+            changeYear: true,
+            buttonImage: "@Url.Content("~/Content/themes/JqueryDesign/images/calendar.gif")",
+            dateFormat:'dd.mm.yy',
+            buttonImageOnly: true
+        });
+    });
+  </script>
+
+<section id="IsikForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend></legend>
+            <ol>
+                <li>
+                    @Html.LabelFor(m => m.Eesnimi)
+                    @Html.TextBoxFor(m => m.Eesnimi)
+                    @Html.ValidationMessageFor(m => m.Eesnimi)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.Perenimi)
+                    @Html.TextBoxFor(m => m.Perenimi)
+                    @Html.ValidationMessageFor(m => m.Perenimi)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.Isikukood)
+                    @Html.TextBoxFor(m => m.Isikukood)
+                    @Html.ValidationMessageFor(m => m.Isikukood)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.EMail)
+                    @Html.TextBoxFor(m => m.EMail)
+                    @Html.ValidationMessageFor(m => m.EMail)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.KontaktTelefon)
+                    @Html.TextBoxFor(m => m.KontaktTelefon)
+                    @Html.ValidationMessageFor(m => m.KontaktTelefon)
+               </li>
+                <li>
+                    @Html.LabelFor(m => m.SynniKP)
+                    @Html.TextBoxFor(m => m.SynniKP)
+                    @Html.ValidationMessageFor(m => m.SynniKP)
+                </li>
+            </ol>
+            <input type="submit" value="Salvesta" />
+        </fieldset>
+    }
+</section>
+<br />
+@Html.ActionLink("Tagasi", "Isikud")<br />

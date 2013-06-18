@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiimaToostusKlient", "PiimaToostusKlient\PiimaToostusKlient.csproj", "{8F1B15BF-B0A2-4BE9-ADC1-E6FD52AE18D0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F16ECA85-0B93-4FFD-B4C5-CE594BE752EE} = {F16ECA85-0B93-4FFD-B4C5-CE594BE752EE}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiimaToostusService", "PiimaToostusService\PiimaToostusService.csproj", "{F16ECA85-0B93-4FFD-B4C5-CE594BE752EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PtService.NhibernateImpl", "PiimatoostusService.DAO\PtService.NhibernateImpl.csproj", "{C99BC4F4-5C16-49D5-8F97-1235CF8739FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F1B15BF-B0A2-4BE9-ADC1-E6FD52AE18D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F1B15BF-B0A2-4BE9-ADC1-E6FD52AE18D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F1B15BF-B0A2-4BE9-ADC1-E6FD52AE18D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F1B15BF-B0A2-4BE9-ADC1-E6FD52AE18D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16ECA85-0B93-4FFD-B4C5-CE594BE752EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16ECA85-0B93-4FFD-B4C5-CE594BE752EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16ECA85-0B93-4FFD-B4C5-CE594BE752EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16ECA85-0B93-4FFD-B4C5-CE594BE752EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C99BC4F4-5C16-49D5-8F97-1235CF8739FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C99BC4F4-5C16-49D5-8F97-1235CF8739FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C99BC4F4-5C16-49D5-8F97-1235CF8739FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C99BC4F4-5C16-49D5-8F97-1235CF8739FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
